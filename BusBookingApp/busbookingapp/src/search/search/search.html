@@ -1,0 +1,95 @@
+
+<div class="container">
+  <h2>Search Buses</h2>
+  <p>Find your bus for your next journey</p>
+
+  <div class="search-box">
+
+    <div class="form-group">
+      <label>From</label>
+      <select [(ngModel)]="searchObj.fromLocation">
+        <option [ngValue]="null">Select Source</option>
+        <option *ngFor="let loc of location$ | async" [ngValue]="loc.locationId">
+          {{loc.locationName}}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>To</label>
+      <select [(ngModel)]="searchObj.toLocation">
+        <option [ngValue]="null">Select Destination</option>
+        <option *ngFor="let loc of location$ | async" [ngValue]="loc.locationId">
+          {{loc.locationName}}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Travel Date</label>
+      <input type="date" [(ngModel)]="searchObj.travelDate">
+    </div>
+
+    <button (click)="onSearch()">Search Buses</button>
+
+  </div>
+
+  <div class="results">
+    <h3>Available Buses</h3>
+
+    <div *ngIf="busList.length === 0">
+      No buses found. Search your journey!
+    </div>
+
+    <div *ngFor="let bus of busList" class="bus-card">
+
+      <div>
+        <h3>{{bus.busName}}</h3>
+        <p>Bus No: {{bus.busVehicleNo}}</p>
+      </div>
+
+      <div>
+        <strong>Departure:</strong>
+        {{bus.departureTime }}
+      </div>
+
+      <div>
+        <strong>Arrival:</strong>
+        {{bus.arrivalTime }}
+      </div>
+
+      <div>
+        <strong>Price:</strong> ₹{{bus.price}}
+      </div>
+
+      <div>
+        <strong>Available Seats:</strong> {{bus.availableSeats}}
+      </div>
+
+      <button
+        [routerLink]="['/booking', bus.scheduleId]">
+        Book Now
+      </button>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

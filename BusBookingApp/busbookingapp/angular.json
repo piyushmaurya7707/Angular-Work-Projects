@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "AngularApp": {
+    "busbookingapp": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -26,7 +26,6 @@
             ],
             "styles": [
               "src/styles.css"
-             
             ]
           },
           "configurations": {
@@ -57,10 +56,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "AngularApp:build:production"
+              "buildTarget": "busbookingapp:build:production"
             },
             "development": {
-              "buildTarget": "AngularApp:build:development"
+              "buildTarget": "busbookingapp:build:development"
             }
           },
           "defaultConfiguration": "development"
